@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Page from "../../../components/UI/Page/Page";
 import API from "../../../core/api";
 import Loading from "../../../hoc/Loading";
+import moment from "moment";
 
 export class Event extends Component {
   state = {
@@ -33,23 +34,23 @@ export class Event extends Component {
               {this.state.eventDetails.closed ? (
                 <div>
                   <label>Closed</label>
-                  <p>{this.state.eventDetails.closed}</p>
+                  <p>{moment(this.state.eventDetails.closed).format("L")}</p>
                 </div>
               ) : null}
               <div className="form-group">
                 <label>Categories</label>
-                <p>
-                  {this.state.eventDetails.categories
-                    .map(category => category.title)
-                    .join(", ")}
-                </p>
+                <ul>
+                  {this.state.eventDetails.categories.map(category => (
+                    <li key={category.id}>{category.title}</li>
+                  ))}
+                </ul>
               </div>
               <div className="form-group">
                 <label>Sources</label>
                 <ul>
                   {this.state.eventDetails.sources.map(source => {
                     return (
-                      <li>
+                      <li key={source.id}>
                         <a
                           href={source.url}
                           target="_blank"
@@ -58,6 +59,16 @@ export class Event extends Component {
                           {source.id}
                         </a>
                       </li>
+                    );
+                  })}
+                </ul>
+              </div>
+              <div className="form-group">
+                <label>Event Dates</label>
+                <ul>
+                  {this.state.eventDetails.geometries.map(item => {
+                    return (
+                      <li key={item.date}>{moment(item.date).format("L")}</li>
                     );
                   })}
                 </ul>
