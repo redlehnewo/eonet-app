@@ -11,7 +11,7 @@ const Toolbar = props => {
     <header>
       <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
         <Link to="/" className="navbar-brand">
-          Fluke Task
+          EONET
         </Link>
 
         <button
