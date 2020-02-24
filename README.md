@@ -1,4 +1,4 @@
-# Fluke front-end developer recruitment task
+# Front-end developer recruitment task
 
 The provided app is built using [create-react-app](https://github.com/facebook/create-react-app). See its documentation for more details.
 
