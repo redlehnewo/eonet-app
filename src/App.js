@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Event from "./containers/Events/Event/Event";
+import Events from "./containers/Events/Events";
+import Toolbar from "./components/Navigation/Toolbar/Toolbar";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { Route } from "react-router-dom";
+
+class App extends Component {
+  state = {
+    navlinkConfig: [{}]
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Toolbar />
+        <main className="container">
+          <Route path="/:id" component={Event} />
+          <Route path="/" exact component={Events} />
+        </main>
+      </div>
+    );
+  }
 }
 
 export default App;
